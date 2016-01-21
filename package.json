@@ -1,6 +1,6 @@
 {
   "name": "@kmoerman/bitset",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Javascript implementation of variable-width bitset objects and common bitwise operations on 32-bit integers.",
   "main": "bitset.js",
   "keywords": [
@@ -8,9 +8,9 @@
     "bitwise",
     "bitwise operation"
   ],
-  "repository" :
-  { "type" : "git"
-  , "url" : "https://github.com/kmoerman/bitset.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kmoerman/bitset.git"
   },
   "author": "Klaas Moerman",
   "license": "MIT"
