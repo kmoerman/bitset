@@ -1,0 +1,13 @@
+{
+  "name": "@kmoerman/bitset",
+  "version": "0.0.0",
+  "description": "Implementation of variable-width bitset objects and common bitwise operations on javascript's 32bit integers.",
+  "main": "bitset.js",
+  "keywords": [
+    "bitset",
+    "bitwise",
+    "bitwise operation"
+  ],
+  "author": "Klaas Moerman",
+  "license": "MIT"
+}
