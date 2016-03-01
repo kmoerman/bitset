@@ -8,9 +8,17 @@
     "bitwise",
     "bitwise operation"
   ],
+  "scripts": {
+    "test": "node test/func.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/kmoerman/bitset.git"
+  },
+  "devDependencies": {
+    "benchmark": "^2.1.0",
+    "random-js": "^1.0.8",
+    "should": "^8.2.2"
   },
   "author": "Klaas Moerman",
   "license": "MIT"
