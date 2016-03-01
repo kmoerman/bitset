@@ -75,16 +75,20 @@ Bitset.prototype.hasSubset = function (that) {
   var l = Math.min(m,n);
   var i = 0;
   var s = true;
+  var a, b;
+
   while (i < l && s) {
-    s = ((that.intArray[i] & this.intArray[i]) == that.intArray[i]);
+    a = (this.intArray[i]|0);
+    b = (that.intArray[i]|0);
+    s = ((a & b) === b);
     ++i;
   }
-  if (i < l) return false;
-  if (i < m) return true;
-  while (i < n && s) {
+
+  while (s && i < n) {
     s = !that.intArray[i];
     ++i;
   }
+
   return s;
 }
 
@@ -121,7 +125,8 @@ Bitset.prototype.min = function () {
 }
 
 Bitset.prototype.count = function () {
-  for (var c = 0, i = 0; i < this.intArray.length; ++i)
+  var c = 0;
+  for (var i in this.intArray)
     c += Bitset.count(this.intArray[i]);
   return c;
 }
@@ -140,9 +145,9 @@ Bitset.prototype.isSingleton = function () {
 Bitset.prototype.each = function (f) {
   var b = 0;
   for (var i in this.intArray) {
-    b = this.intArray[i]
+    b = this.intArray[i];
     for (var j = 0, k = 1; j < 32; ++j, k <<= 1)
-      if (b & k) f(i << 5 | j);
+      if (b & k) f((i << 5) | j);
   }
 }
 
@@ -187,7 +192,23 @@ Bitset.from = function (i) {
   return b;
 }
 
+Bitset.copy = function (a) {
+  var b = new Bitset();
+  b.intArray = a.intArray.slice(0);
+  return b;
+}
 
+Bitset.union = function (a, b) {
+  return Bitset.copy(a).union(b);
+}
+
+Bitset.intersection = function (a, b) {
+  return Bitset.copy(a).intersect(b);
+}
+
+Bitset.difference = function (a, b) {
+  return Bitset.copy(a).difference(b);
+}
 
 // Collection of 32bit operations, freely adapted from
 // https://graphics.stanford.edu/~seander/bithacks.html
